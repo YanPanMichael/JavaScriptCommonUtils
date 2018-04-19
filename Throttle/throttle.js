@@ -34,3 +34,25 @@ function throttle(func, wait, options) {
       return result;
     };
   };
+
+  /// creating a function to pass in the throteling function 
+var theApiCall = function () {
+    console.log("i am a custome function that is passed as paramete");
+}
+
+/// limiting the api call thrice a second
+var resultFunction = throttle(theApiCall, 3 * 1000);
+
+/// Example One:
+//calling the closure funciton in every 100 miliseconds
+var intervalflag = setInterval(function () {
+    resultFunction();
+}, 1000);
+
+//clearInterval(intervalflag)
+
+// Example Two:
+//resize window
+window.addEventListener('resize', throttle(function() {
+    console.log('resize!!');
+}, 2 * 1000));
