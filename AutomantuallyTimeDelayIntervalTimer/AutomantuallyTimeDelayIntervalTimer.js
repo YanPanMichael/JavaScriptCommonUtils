@@ -1,4 +1,4 @@
-const AutomantuallyTimeDelayIntervalTimer = {
+const automantuallyTimeDelayIntervalTimer = {
     interval: 1000,
     execCounter: 0,
     timerRef: null,
@@ -39,6 +39,24 @@ const AutomantuallyTimeDelayIntervalTimer = {
             }
             that.timerRef = window.setInterval(this.doCheck, that.interval);
         } catch (error) { }
+    },
+    start: function() {
+        var that = this;
+        if (that.timerRef === null) {
+            that.timerRef = window.setInterval(this.doCheck, that.interval);
+        } else {
+            that.reset();
+        }
+    },
+    stop: function(){
+        var that = this;
+        if (that.timerRef !== null) {
+            window.clearInterval(that.timerRef);
+            that.timerRef = null;
+        }
     }
+}
 
+export {
+    automantuallyTimeDelayIntervalTimer
 }
