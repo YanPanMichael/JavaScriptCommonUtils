@@ -4,7 +4,7 @@ const automantuallyTimeDelayIntervalTimer = {
     timerRef: null,
     doCheck: function () {
         try {
-            var that = this;
+            var that = automantuallyTimeDelayIntervalTimer;
             that.execCounter++;
 
             //Real function insert into this below place
@@ -29,7 +29,7 @@ const automantuallyTimeDelayIntervalTimer = {
     },
     reset: function (x) {
         try {
-            var that = this;
+            var that = automantuallyTimeDelayIntervalTimer;
             window.clearInterval(that.timerRef);
             if (!x || typeof x != 'number') {
                 that.interval = 1000;
@@ -37,19 +37,19 @@ const automantuallyTimeDelayIntervalTimer = {
             } else {
                 that.interval = x;
             }
-            that.timerRef = window.setInterval(this.doCheck, that.interval);
+            that.timerRef = window.setInterval(automantuallyTimeDelayIntervalTimer.doCheck, that.interval);
         } catch (error) { }
     },
     start: function() {
-        var that = this;
+        var that = automantuallyTimeDelayIntervalTimer;
         if (that.timerRef === null) {
-            that.timerRef = window.setInterval(this.doCheck, that.interval);
+            that.timerRef = window.setInterval(automantuallyTimeDelayIntervalTimer.doCheck, that.interval);
         } else {
             that.reset();
         }
     },
     stop: function(){
-        var that = this;
+        var that = automantuallyTimeDelayIntervalTimer;
         if (that.timerRef !== null) {
             window.clearInterval(that.timerRef);
             that.timerRef = null;
