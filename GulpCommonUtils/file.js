@@ -91,5 +91,26 @@ var util = {
         if(!path) {
             return;
         }
+        var name = '',
+            path_ = path.split('/');
+        for (var i = 0; i < path_.length; i++) {
+            name += (path_[i] + '/').replace(/\/\//g, '/');
+            if(!fs.existsSync(name)) {
+                fs.mkdirSync(name);
+            }
+        }
+    },
+    existsSync: function (path) {
+        var isExist = true;
+        if (path instanceof Array) {
+            for (var i = 0; i < path.length; i++) {
+                isExist = isExist && this.existsSync(path[i])
+            }
+            return path.length ? isExist : false;
+        } else {
+            return fs.existsSync(path);
+        }
     }
-}
+};
+
+module.exports = util;
