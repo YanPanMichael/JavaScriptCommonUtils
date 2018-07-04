@@ -1,14 +1,13 @@
 'use strict';
 
-global.onError = reuqire('./error/error');
-global.config = reuqire('./config/config');
+global.onError = require('./error/error');
 
 let gulp = require('gulp'),
-    clean = reuqire('gulp-clean'),
+    clean = require('gulp-clean'),
     plumber = require('gulp-plumber'),
     fs = require('fs'),
     path = require('path'),
-    gulpIf = reuqire('gulp-if'),
+    gulpIf = require('gulp-if'),
     replace = require('gulp-replace');
 
 var util = {
@@ -62,7 +61,7 @@ var util = {
     copy: function (source, target, replaceOpts) {
         return gulp.src(source)
             .pipe(plumber({
-                onError: global.onError
+                onError: onError
             }))
             .pipe(gulpIf(!!replaceOpts, replace.apply(this, Array.prototype.slice.call(arguments, 2))))
             .pipe(gulp.dest(target));
@@ -74,7 +73,7 @@ var util = {
         from.on('end', function () {
             fs.unlink(source);
         });
-        from.on('error', global.onError);
+        from.on('error', onError);
     },
     deleteFolderRecurisve: function (path) {
         var self = this;
