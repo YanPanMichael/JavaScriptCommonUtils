@@ -4,11 +4,12 @@ var config = module.exports = {
         src: root = 'src/',
         watch: root = 'src/',
         build: root = 'build/',
-        deploy: root = '../cv-content-static',
+        deploy: root = '../',
     }
 };
 config.deploy = {
     dist: {
-        
+        to: '',
+        from: ''
     }
 }
