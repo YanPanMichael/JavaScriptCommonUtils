@@ -2,6 +2,7 @@
 
 global.CONFIG = require('./config/config');
 global.GULPFILEUTIL = require('./file');
+global.onError = require('./error/error');
 
 require('gulp-stats')(require('gulp'));
 
@@ -20,5 +21,17 @@ if (!fs.existsSync(global.CONFIG.path.deploy)) {
 
 gulp.task('copyToDist', function() {
     GULPFILEUTIL.deleteFolderRecurisve(global.CONFIG.deploy.dist.to);
-    copySourcetoTarget(global.CONFIG.deploy.dist.from + '**/*')
-})
+    copySourcetoTarget(global.CONFIG.deploy.dist.from + '**/*', global.CONFIG.deploy.dist.to)
+        .on('end', function() {
+            gulpUtil.log("Copy completed")
+        })
+});
+
+function copySourcetoTarget(source, target, replaceOpts) {
+    return gulp.src(source)
+        .pipe(plumber({
+            onError: global.onError
+        }))
+        .pipe(gulpIf(!!replaceOpts, replace.apply(this, Array.prototype.slice.call(arguments, 2))))
+        .pipe(gulp.dest(target));
+}
