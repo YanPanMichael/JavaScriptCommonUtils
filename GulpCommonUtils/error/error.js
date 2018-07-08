@@ -1,6 +1,6 @@
 'use strict';
 
-var onError = module.exports = function (err) {
+var onError = function (err) {
     console.log(err);
     if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'staging') {
         process.exit(1);
@@ -9,3 +9,5 @@ var onError = module.exports = function (err) {
         this.emit('end');
     } catch (e) {}
 };
+
+module.exports = onError;

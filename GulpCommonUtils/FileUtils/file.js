@@ -1,6 +1,6 @@
 'use strict';
 
-global.onError = require('./error/error');
+global.onError = require('./Error/error');
 
 let gulp = require('gulp'),
     clean = require('gulp-clean'),
