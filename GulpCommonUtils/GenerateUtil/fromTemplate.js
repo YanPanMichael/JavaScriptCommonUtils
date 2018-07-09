@@ -2,7 +2,7 @@
 
 let gulp = require('gulp'),
     plumber = require('gulp-plumber'),
-    handlebars = require('gulp-comile-handlebars'),
+    handlebars = require('gulp-compile-handlebars'),
     rename = require('gulp-rename'),
     gulpIf = require('gulp-if'),
     onError = require('../Error/error');

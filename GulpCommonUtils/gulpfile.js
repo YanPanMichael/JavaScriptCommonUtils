@@ -6,11 +6,11 @@ global.CONFIG = require('./config/config');
 require('gulp-stats')(require('gulp'));
 
 var gulp = require('gulp'),
-    utils = require('./file'),
+    utils = require('./FileUtils/file'),
     gulpUtil = require('gulp-util'),
     // changed = requrie('gulp-changed'),
     fs = require('fs'),
-    generateFromTeplate = require('./GenerateUtil/fromTeplate');
+    generateFromTeplate = require('./GenerateUtil/fromTemplate');
 
 if (!fs.existsSync(CONFIG.path.deploy)) {
     console.log("Source folder and files don\'t exist, you can clone it");
@@ -26,9 +26,9 @@ gulp.task('copyToDist', function() {
 });
 
 gulp.task('readMe', function () {
-    return generateFromTeplate('./template/README.md', './', '../package.json');
+    return generateFromTeplate('./template/README.md', './', './package.json');
 });
 
-gulp.tesk('default', ['readMe']);
+gulp.task('default', ['readMe']);
 })()
 
