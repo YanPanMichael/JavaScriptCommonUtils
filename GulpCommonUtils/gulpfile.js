@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     utils = require('./file'),
     gulpUtil = require('gulp-util'),
     // changed = requrie('gulp-changed'),
-    fs = require('fs');
+    fs = require('fs'),
+    generateFromTeplate = require('./GenerateUtil/fromTeplate');
 
 if (!fs.existsSync(CONFIG.path.deploy)) {
     console.log("Source folder and files don\'t exist, you can clone it");
@@ -23,4 +24,11 @@ gulp.task('copyToDist', function() {
             gulpUtil.log("Copy completed")
         })
 });
+
+gulp.task('readMe', function () {
+    return generateFromTeplate('./template/README.md', './', '../package.json');
+});
+
+gulp.tesk('default', ['readMe']);
 })()
+
