@@ -1,9 +1,9 @@
-{"",
+{
+    Name: "",
 
-Description:
-"",
+    Description: "",
 
-Version:
-"",
+    Version: "",
 
-Getting Started}
+    Getting Started
+}
