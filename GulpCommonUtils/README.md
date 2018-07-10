@@ -1,9 +1,12 @@
 {
-    Name: "",
+    Name
+        gulp-common-utils
 
-    Description: "",
+    Description
+        a gulp common util tool
 
-    Version: "",
+    Version
+        1.0.0
 
     Getting Started
 }

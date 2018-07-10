@@ -1,9 +1,12 @@
 {
-    Name: "{{name}}",
+    Name
+        {{name}}
 
-    Description: "{{description}}",
+    Description
+        {{description}}
 
-    Version: "{{version}}",
+    Version
+        {{version}}
 
     Getting Started
 }

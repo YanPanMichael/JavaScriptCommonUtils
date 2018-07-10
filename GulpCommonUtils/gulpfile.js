@@ -26,7 +26,7 @@ gulp.task('copyToDist', function() {
 });
 
 gulp.task('readMe', function () {
-    return generateFromTeplate('./template/README.md', './', './package.json');
+    return generateFromTeplate('./template/README.md', './', require('./package.json'));
 });
 
 gulp.task('default', ['readMe']);
