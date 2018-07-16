@@ -30,5 +30,5 @@ gulp.task('readMe', function () {
 });
 
 gulp.task('default', ['readMe']);
-})()
+}())
 
