@@ -84,3 +84,7 @@
     // database name and the given path
     return '/' + opts.db + '/' + path;
   };
+
+  var url = window.location.href;
+  var user = parseUri(url)['user'];
+  console.log('user' + user);

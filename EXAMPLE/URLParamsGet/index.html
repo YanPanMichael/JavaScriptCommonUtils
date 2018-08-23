@@ -5,15 +5,12 @@
   <title></title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="../../URLParamsGet/getURLParamsValueCommon.js" />
 </head>
 
 <body>
   <div><h1>hahaha</h1></div>
-  <script>
-    var url = window.location.href;
-    var user = parseUri(url)['user'];
-    console.log('user' + user);
-  </script>
+  <iframe src="http:www.baidu.com?user=aa" frameborder="0">
+    <script type="text/javascript" src="../../URLParamsGet/getURLParamsValueCommon.js"></script>
+  </iframe>
 </body>
 </html>
