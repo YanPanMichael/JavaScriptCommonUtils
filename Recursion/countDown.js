@@ -11,7 +11,7 @@ const countDownDelay = (value, fn, delay) => {
   fn(value);
   if(timeoutRef) {
     clearTimeout(timeoutRef);
-    timeoutRef = null;
+    // timeoutRef = null;
   };
   if(value > 0) {
     timeoutRef = setTimeout(() => countDownDelay(value-1, fn, delay), delay);
