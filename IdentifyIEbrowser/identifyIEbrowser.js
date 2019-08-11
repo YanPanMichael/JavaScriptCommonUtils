@@ -1,6 +1,5 @@
 (function(){
-  document.body.appendChild(
-    (!!window.ActiveXObject || 'ActiveXObject' in window) ?
-    <p>Work in IE browser</p> : ''
-  )
+  var node = document.createElement('div');
+  node.innerText = (!!window.ActiveXObject || 'ActiveXObject' in window) ? 'Work in IE browser' : 'Not work in IE browser';
+  document.body.appendChild(node)
 })()
