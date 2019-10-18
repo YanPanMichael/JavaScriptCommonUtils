@@ -15,3 +15,5 @@ arr.reduce((acc, val) => {
 }, [])
 //or with decomposition syntax
 const flatted = arr => [].concat(...arr)
+
+//reduce + concat + isSrray + recursivity
