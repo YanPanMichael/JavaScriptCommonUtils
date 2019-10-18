@@ -18,12 +18,12 @@ const flatted = arr => [].concat(...arr);
 
 //reduce + concat + isSrray + recursivity
 var arr = [1, 2, [3, 4, [5, 6]]];
-
 function flatdeep(arr) {
   return arr.reduce(
     (acc, cur) => acc.concat(Array.isArray(cur) ? flatdeep(cur) : cur),
     []
   );
 }
-
 flatdeep(arr);
+
+//non recursive flatten deep using a stack
