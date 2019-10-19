@@ -47,3 +47,18 @@ function flatten(input) {
 var arr = [1, 2, [3, 4, [5, 6]]];
 flatten(arr);
 // [1, 2, 3, 4, 5, 6]
+
+//User Generator function 
+function* flatten(array) {
+  for (const item of array) {
+    if (Array.isArray(item)) {
+      yield* flatten(item);
+    } else {
+      yield item;
+    }
+  }
+}
+
+var arr = [1, 2, [3, 4, [5, 6]]];
+const flattened = [...flatten(arr)];
+// [1, 2, 3, 4, 5, 6]
