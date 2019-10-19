@@ -27,3 +27,16 @@ function flatdeep(arr) {
 flatdeep(arr);
 
 //non recursive flatten deep using a stack
+function flatten(input) {
+  const stack = [...input];
+  const res=[];
+  while(stack.length) {
+    const next = stack.pop();
+    if(Array.isArray(next)) {
+      stack.push(...next);
+    }else{
+      res.push(next);
+    }
+  }
+  return res.reverse();
+}
