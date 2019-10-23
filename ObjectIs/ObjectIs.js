@@ -12,3 +12,7 @@
     };
   }
 })();
+
+// let a = [];
+// let b = Array.from(a);
+// console.log(Object.is(a, b));
