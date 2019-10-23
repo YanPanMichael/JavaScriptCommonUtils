@@ -1,1 +1,5 @@
 // Object.is polyfill
+
+(function(){
+  
+})()
