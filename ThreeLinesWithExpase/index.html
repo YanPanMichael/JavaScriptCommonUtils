@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      p {
+        width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /*超出3行部分显示省略号，去掉该属性 显示全部*/
+        -webkit-box-orient: vertical;
+      }
+    </style>
+    <body>
+      <p>
+        首先得判断文本自否超过四行，因为这些一般都是是前端异步请求然后后端发送过来，在组长的指导下，使用了
+        Vue 中的 nextTick 来监听 DOM 中是数据变化。接下来主要是 css
+        上的思路，其实上图可以分为两部分，如下图，标号1的部分展示前面三行，标号为2的部分会根据1的行数判断缩进的大小，然后展示第四行。最后通过背景色的控制让两者看上去是一段文字。
+      </p>
+    </body>
+  </body>
+</html>
