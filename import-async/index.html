@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<nav>
+  <a href="books.html" data-entry-module="books">Books</a>
+  <a href="movies.html" data-entry-module="movies">Movies</a>
+  <a href="video-games.html" data-entry-module="video-games">Video Games</a>
+</nav>
+
+<main>Content will load here!</main>
+
+<script>
+  const main = document.querySelector("main");
+  for (const link of document.querySelectorAll("nav > a")) {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+
+      import(`./section-modules/${link.dataset.entryModule}.js`)
+        .then(module => {
+          module.loadPageInto(main);
+        })
+        .catch(err => {
+          main.textContent = err.message;
+        });
+    });
+  }
+</script>
