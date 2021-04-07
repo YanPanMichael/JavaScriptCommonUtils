@@ -1,0 +1,28 @@
+{
+  "name": "utils",
+  "version": "1.0.0",
+  "description": "js utils",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "scripts": {
+    "compile": "BABEL_ENV=common babel src -d lib",
+    "compile:es": "BABEL_ENV=es babel src -d es"
+  },
+  "keywords": [
+    "utils"
+  ],
+  "engines": {
+    "node": ">= 8.10.0"
+  },
+  "author": "yanpanmichael",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "7",
+    "@babel/core": "7",
+    "@babel/preset-env": "^7.13.12",
+    "@commitlint/cli": "6",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "23",
+    "babel-plugin-import": "1"
+  }
+}

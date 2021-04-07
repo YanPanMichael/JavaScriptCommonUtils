@@ -1,0 +1,15 @@
+node_modules
+
+package-lock.json
+
+yarn-error.log
+yarn.lock
+
+tests_result.json
+.cache
+.parcel-cache
+dist
+
+/lib
+/es
+/coverage
