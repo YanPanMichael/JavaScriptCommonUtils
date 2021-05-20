@@ -1,4 +1,4 @@
-const handleFormSubmit = async (isEdit, finishThenDone) => {
+async function handleFormSubmit(isEdit, finishThenDone) {
   if (isEdit) {
     modifyContent().then((res) => {
       if (res.success) {
@@ -23,7 +23,7 @@ const handleFormSubmit = async (isEdit, finishThenDone) => {
   // }
 }
 
-const modifyContent = (params) => {
+function modifyContent(params) {
   return new Promise((resolve, reject) => {
     const obj = {
       resolve,
@@ -52,10 +52,18 @@ async function modifyContentFunc(obj) {
 }
 
 function fetchDataFunc1(params) {
-  return fetch('');
+  // return fetch('');
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        status: 'succeed',
+        success: true,
+      })
+    }, 1000);
+  })
 }
 
-const modifyVideo = (params) => {
+function modifyVideo(params) {
   return new Promise((resolve, reject) => {
     const obj = {
       resolve,
@@ -84,7 +92,15 @@ async function modifyVideoFunc(obj) {
 }
 
 function fetchDataFunc2(params) {
-  return fetch('');
+  // return fetch('');
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        status: 'succeed',
+        success: true,
+      })
+    }, 1000);
+  })
 }
 
-handleFormSubmit(true, console.log('a'))
+handleFormSubmit(true, () => console.log('a'))

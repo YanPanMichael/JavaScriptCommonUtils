@@ -11,7 +11,7 @@ middleware.push((next) => {
 	console.log(2.1)
 })
 middleware.push((next) => {
-  console.log(3)
+    console.log(3)
 	next()
 	console.log(3.1)
 })
