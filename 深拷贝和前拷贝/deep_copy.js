@@ -210,8 +210,8 @@ var sourceObj = { name: "川川", age: 20, job: "搬砖"}
 var targetObj = {};  // 在外头定义对象
 var arrs = [];   // 定义一个空数组,保存新添加入的值,需要将obj中的对象添加到这个arrs数组当中去
 for(var i in sourceObj ) {
-    targetObj.name = sourceObj[i];
-   arrs.push(targetObj);
+  targetObj.name = sourceObj[i];
+  arrs.push(targetObj);
 }
 console.log(arrs);  //  [{name: "搬砖"}, {name: "搬砖", {name: "搬砖"}}]
 结果令人意外,却是
@@ -242,7 +242,7 @@ var arrs = [];   // 定义一个空数组,保存新添加入的值,需要将obj�
 for(var i in sourceObj ) {
     var targetObj = {};  // 在里面定义对象
     targetObj.name = sourceObj[i];
-   arrs.push(targetObj);
+    arrs.push(targetObj);
 }
 console.log(arrs);  //  [{name: "川川"}, {name: 20, {name: "搬砖"}}]
 其中在for-in中前面的 i代表的就是 key值,所以:如果想要把 sourceObj对象中的键值一并放到 arrs数组中,你可以这样做:将目标对象赋值时, targetObjet.name换成 targetObject[i]就可以了的
@@ -252,7 +252,7 @@ var arrs = [];   // 定义一个空数组,保存新添加入的值,需要将obj�
 for(var i in sourceObj ) {
     var targetObj = {};  // 在里面定义对象
     targetObj[i] = sourceObj[i];
-   arrs.push(targetObj);
+    arrs.push(targetObj);
 }
 console.log(arrs);  //  [{name: "川川"}, {age: 20}, {job: "搬砖"}]
 曾今,这被作为一个面试题,尽管很基础,但我发现,能快速回答以及正确做出来的,还真不多,虽然也谈不上奇葩,一下子没想出来,也并不能代表什么,但是不得不说,最基础的东西,才是最值得回味的
