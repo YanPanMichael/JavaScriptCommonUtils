@@ -1,4 +1,4 @@
-// 如何监控 js 对象属性的变化?
+// 如何监控 js 对象属性的变化? 属性劫持
 // 方式 1:通过Object.defineProperty()来监听
 var obj = {
   name: 'itclanCoder',
