@@ -19,5 +19,5 @@ function compose(...funcs) {
 }
 
 var funcList = [(res)=>console.log('res'+res), function(){return Math.max(...arguments)}]
-
+// 注意输入参数一定是...funcList
 compose(...funcList)(2,3,4,5)

@@ -161,7 +161,7 @@ function isArray(val){
 }
 // 判断是不是对象
 function isObject(val){
-    return typeof val ==='object' && val !== null;
+    return typeof val === 'object' && val !== null;
 }
 var obj1 = {x: 1, y: 2, z: { a:3, b: 4}}
 var obj2 = deepCopy(obj1);
@@ -232,3 +232,96 @@ console.log(arrs);  //  [{name: "川川"}, {age: 20}, {job: "搬砖"}]
 // 其中前面三者只能实现数据的一级拷贝,如果想要更深沉次的拷贝的话,那么可以用递归实现,如上面代码所示
 
 // 当然最后也提到了一个开发中常见的问题:往一个数组中push对象，前面的值总是会被最后一次的值覆盖的问题,具体解决办法是,把目标对象放在for-in里面就可以了的
+
+function deep_copy(a) {
+    const targ = Array.prototype.slice.call(a, 0);
+    const targ2 = Array.prototype.concat.call(a, []);
+    const targ3 = JSON.parse(JSON.stringify(a));
+    const targ4 = Object.prototype.assign({}, a);
+    const targ5 = [...a];
+    const targList = [];
+    for(let b in a) {
+        targList.push(b);
+    }
+}
+
+// 深度优先遍历
+function dfs(node) {
+    const res = [];
+    if(node) {
+        const stack = [];
+        stack.push(node);
+        while(stack.length) {
+            const curr = stack.pop();
+            res.push(curr);
+            for(let child of curr.children) {
+                stack.push(child)
+            }
+        }
+    }
+    return res;
+}
+
+// conpose()(arg)
+function compose(...args) {
+    if(args.length === 0) {
+        return v => v;
+      }
+      if(args.length === 1) {
+        return args[0];
+      }
+    return args.reduce((sum, cur) => (...input) => sum(cur(...input)), val => val);
+}
+var a = [(v)=>console.log('1',v), (g)=>console.log('2',g)]
+compose(...a)();
+
+function compose(middleWare) {
+    return async function(...args) {
+        async function dispatch(i) {
+            const fn = middleWare[i];
+            if(!fn) return null
+            await fn(function next() {
+                dispatch(i + 1);
+            }, ...args)
+        }
+        await dispatch(0);
+    }
+}
+
+function compose_simple(middleware) {
+    return async function(...args) {
+        await dispatch(0)
+        async function dispatch(i) {
+            const fn = middleware[i]
+            if(!fn) return null
+            await fn(function next() {
+                dispatch(i+1)
+            }, ...args)
+        }
+    }
+}
+
+function test(id) {
+    const node = document.getElementById(id);
+    Object.defineProperty(node, 'value', {
+        configurable: true,
+        get: function() {
+            return this.__name__;
+        },
+        set: function(value) {
+            this.__name__ = value;
+            console.log('name: ', this.__name__)
+        }
+    })
+}
+
+const handler = {
+    set: function(target, name, value) {
+        console.log('phone发生了变化');
+        // 改变被代理对象的值,使之保持一致
+        target[name] = value;
+    }
+}
+
+const proxy = new Proxy(node, handler)
+proxy.name = '';
