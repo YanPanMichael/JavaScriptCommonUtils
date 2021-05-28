@@ -239,6 +239,7 @@ function deep_copy(a) {
     const targ3 = JSON.parse(JSON.stringify(a));
     const targ4 = Object.prototype.assign({}, a);
     const targ5 = [...a];
+    const targ6 = Array.from(a);
     const targList = [];
     for(let b in a) {
         targList.push(b);
