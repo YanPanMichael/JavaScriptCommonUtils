@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <meta charset="utf-8">
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <style>
+    select {
+      border: 1px solid palevioletred;
+      border-radius: 5px;
+    }
+
+    select:focus {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="tree">
+    <li><input type=checkbox>中国
+      <ul>
+        <li><input type=checkbox>山东
+          <ul>
+            <li><input type=checkbox>青岛</li>
+            <li><input type=checkbox>枣庄</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <form name="form1" method="post">
+    省份：<select name="province" id="province" "changeSelect(this.selectedIndex)"></select>
+    市区：<select name="city" id="city"></section>
+  </form>
+  <script language="javascript">
+    var arr = tree.getElementsByTagName('input')
+    for (var i = 0; i < arr.length; i++) {
+      var input = arr[i]
+      if (input.type = 'checkbox') {
+        input.onclick = ClickInput
+      }
+    }
+    function ClickInput() {
+      var li = this.parentElement;
+      var arr = li.getElementsByTagName('input')
+      for (var i = 0; i < arr.length; i++) {
+        var input = arr[i]
+        if (input.type == 'checkbox') {
+          input.checked = this.checked
+        }
+      }
+      var li = li.parentElement.parentElement
+
+      while (li.tagName.toLowerCase() == 'li') {
+        var input = li.childNodes[0]
+        if (input.tagName.toLowerCase() == 'input') {
+          input.checked = this.checked
+        }
+        li = li.parentElement.parentElement
+      }
+    }
+  </script>
+  <form name="form1" method="post">
+    省份：<select name="province" id="province" "changeSelect(this.selectedIndex)"></select>
+    市区：<select name="city" id="city"></section>
+  </form>
+  <script>
+    var arrpro = ["请选择省份", "河北省", "四川省"];
+    var arrcit = [["请选择城市"], ["石家庄", "邯郸", "唐山"], ["成都", "绵阳", "德阳"]];
+    window.init;
+    function init() {
+      var province = document.form1.province;
+      var city = document.form1.city;
+      province.length = arrpro.length;
+      for (var i = 0; i < arrpro.length; i++) {
+        province.options[i].text = arrpro[i];
+        province.options[i].value = arrpro[i];
+      }
+      var index = 0;
+      province.selectedIndex = index;
+      city.length = arrcit[index].length;
+      for (var i = 0; i < arrcit[index].length; i++) {
+        city.options[i].text = arrcit[index][i];
+        city.options[i].value = arrcit[index][i];
+      }
+    }
+    function changeSelect(index) {
+      var city = document.form1.city;
+      province.selectedIndex = index;
+      city.length = arrcit[index].length;
+      for (var i = 0; i < arrcit[index].length; i++) {
+        city.options[i].text = arrcit[index][i];
+        city.options[i].text = arrcit[index][i];
+      }
+    }
+  </script>
+</body>
+
+</html>

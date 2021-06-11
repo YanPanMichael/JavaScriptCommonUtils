@@ -130,9 +130,8 @@ for(var key in obj1) {
       obj2[key] = obj1[key]
 }
 obj2.z.a =  100;
-console.log(obj1, obj2);  // 这样的话，改变obj2的变量会影响obj1的变量对象
+console.log(obj1, obj2);  // 如果是第一层 是深拷贝，一层之上是 浅拷贝 obj2影响了obj1
 // 那怎么实现深拷贝?:利用的是递归
-
  /*
   *  * 
   *  @description:把一个对象递归拷贝给另外一个对象
@@ -165,7 +164,7 @@ function isObject(val){
 }
 var obj1 = {x: 1, y: 2, z: { a:3, b: 4}}
 var obj2 = deepCopy(obj1);
-obj2.x = 100；
+obj2.x = 100;
 obj2.z.a = 200;
 console.log(obj1, obj2);
 
@@ -196,7 +195,6 @@ console.log(arrs);  //  [{name: "搬砖"}, {name: "搬砖", {name: "搬砖"}}]
 arrs = [{name: "川川"}, {age: 20}, {job: "搬砖"}]
 
 // 问题原因: 每次取出来的值都放在 targetObj.name中了，因为是在外面的定义的对象，所以每次 targetObj的地址是一样的, arrs中保存的是 targetObj的地址，当最后一次给targetObj.name赋值为 搬砖时
-
 // 由于是同一个 targetObj,所以最后一次给 targetObj.name赋值时,会将前面两次的值给覆盖掉，其实第二次已经把第一次的值覆盖过了
 
 // 具体解决:把定义在外面的目标对象 targetObj放到 for-in里面就可以了的

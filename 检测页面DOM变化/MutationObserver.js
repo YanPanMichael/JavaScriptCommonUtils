@@ -46,7 +46,7 @@ observer.disconnect();
 // 之后用户进行业务操作，不断触发页面事件，引出弹层，或点击按钮，弹出表格等操作时，利用MutationObserver监听并触发回掉函数，反复执行检测脚本。
 // 用户全程对检测脚本执行无感知，正常进行业务操作，但每一次业务操作的执行，都可以帮助我们检查页面文本信息的翻译情况，随着时间的推进，触发更多页面操作时，相应页面的功能也会被触发的更完整，从而可以计算出更准确的页面翻译覆盖率。
 
-通过什么方法可以实现-检测页面 DOM 变化
+// 通过什么方法可以实现-检测页面 DOM 变化
 // 在MVVM框架中,一是监听数据的变化,数据驱动视图
 
 // 通过Object.defineProperties()来监听数据的变化,或使用proxy来代理和反射
@@ -70,14 +70,40 @@ observer.disconnect();
 // 可以观察发生在DOM节点的所有变动,可以观察某一类变动
 // 使用实例
 
+// 创建一个观察器实例并监听`targetNode`元素的变动
+const observer = new MutationObserver(() => {});
+observer.observe(targetNode, config);
+
 // 选择需要观察变动的节点
-var targetNode = document.getElementById('app');
+const targetNode = document.getElementById('some-id');
+
 // 观察器的配置（需要观察什么变动）
 const config = { attributes: true, childList: true, subtree: true };
 
-// 创建一个观察器实例并监听`targetNode`元素的变动
-const observer = new MutationObserver(targetNode,config);
-实例:
+// 当观察到变动时执行的回调函数
+const callback = function(mutationsList, observer) {
+    // Use traditional 'for loops' for IE 11
+    for(let mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            console.log('A child node has been added or removed.');
+        }
+        else if (mutation.type === 'attributes') {
+            console.log('The ' + mutation.attributeName + ' attribute was modified.');
+        }
+    }
+};
+
+// 创建一个观察器实例并传入回调函数
+const observer = new MutationObserver(callback);
+
+// 以上述配置开始观察目标节点
+observer.observe(targetNode, config);
+
+// 之后，可停止观察
+observer.disconnect();
+
+
+// 实例:
 
 // MutationObserver的callback的回调函数是异步的,只有在全部DOM操作完成之后才会调用callback
 
